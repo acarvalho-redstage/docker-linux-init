@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 if [ "$2" == "clone" ]; then
-  git clone https://github.com/redstage/docker-linux-m2.git $1 && cd $1;
+  git clone https://github.com/acarvalho-redstage/docker-linux-m2.git $1 && cd $1;
 fi
 
 git config --global core.autocrlf false
@@ -10,7 +10,12 @@ git config --global diff.renamelimit 5000
 
 sudo chmod -R u+x ./*
 
-docker image pull viniciusbord9/magento2
+if [ "$3" ]; then
+  docker image pull viniciusbord9/magento2:$3
+else
+  docker image pull viniciusbord9/magento2
+fi
+
 docker image pull viniciusbord9/magento2:varnish
 
 if [ "$(uname)" == "cygwin" ] || [ "$(uname)" == "msys" ] || [ "$(uname)" == "win32" ]; then
