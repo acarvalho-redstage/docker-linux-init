@@ -39,7 +39,7 @@ if [ "$3" ]; then
   sed -i '' -e "s/<php_version>/$3/g" docker-compose.yml;
 else
   sed -i '' -e "s/<php_version>/7.0/g" Dockerfile;
-  sed -i '' -e "s/<php_version>/master/g" docker-compose.yml;
+  sed -i '' -e "s/<php_version>/latest/g" docker-compose.yml;
 fi
 
 if [ ! -e src/index.php ]; then
